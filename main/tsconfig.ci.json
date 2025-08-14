@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/kernel.ts",
+    "src/kernel/strategy.ts",
+    "src/persona/**/*.ts",
+    "src/memory/**/*.ts",
+    "src/plugins/registry.ts",
+    "src/utils/**/*.ts"
+  ]
+}

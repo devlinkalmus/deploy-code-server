@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Test</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: black; height: 100vh; overflow: hidden; font-family: monospace;">
+    <!-- Matrix background canvas -->
+    <canvas id="matrix" style="position: fixed; top: 0; left: 0; z-index: 0;"></canvas>
+    
+    <!-- Main content -->
+    <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <h1 style="font-size: 4rem; color: #808080; margin: 0; letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(128, 128, 128, 0.8);">jrvi</h1>
+    </div>
+    
+    <script>
+        console.log('Matrix script starting...');
+        
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        console.log('Canvas element:', canvas);
+        console.log('Canvas context:', ctx);
+        
+        // Make canvas full screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        console.log('Canvas size:', canvas.width, 'x', canvas.height);
+        
+        // Matrix characters (including some Japanese katakana for authenticity)
+        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const fontSize = 20; // Larger for visibility
+        const columns = Math.floor(canvas.width / fontSize);
+        
+        console.log('Columns:', columns, 'Font size:', fontSize);
+        
+        // Array for the drops - one per column
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+        
+        console.log('Drops initialized:', drops.length);
+        
+        function draw() {
+            // Black background with transparency for fade effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Royal blue text - BRIGHT for testing
+            ctx.fillStyle = '#4169E1'; // Full opacity for testing
+            ctx.font = fontSize + 'px monospace';
+            
+            // Loop over drops
+            for (let i = 0; i < drops.length; i++) {
+                // Random character
+                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                
+                // Draw the character
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                // Randomly reset drops that have reached the bottom
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                // Increment Y coordinate
+                drops[i]++;
+            }
+        }
+        
+        // Test draw immediately with visible text
+        console.log('Drawing test text...');
+        ctx.fillStyle = '#FF0000'; // Red for visibility
+        ctx.font = '30px monospace';
+        ctx.fillText('TEST MATRIX', 50, 100);
+        
+        // Draw every 70ms for smooth animation (slowed down 40% from 50ms)
+        console.log('Starting animation interval...');
+        const interval = setInterval(draw, 70);
+        
+        // Also draw immediately
+        draw();
+        
+        console.log('Matrix effect should be running now');
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            console.log('Window resized');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Recalculate columns
+            const newColumns = Math.floor(canvas.width / fontSize);
+            while (drops.length < newColumns) {
+                drops.push(Math.floor(Math.random() * canvas.height / fontSize));
+            }
+            if (drops.length > newColumns) {
+                drops.length = newColumns;
+            }
+        });
+    </script>
+</body>
+</html>

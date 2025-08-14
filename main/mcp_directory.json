@@ -1,0 +1,182 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-03",
+  "description": "JRVI Modular Compute Pod (MCP) Directory - Registry of API wrappers and auto-adaptable logic agents",
+  "retentionPolicy": {
+    "auditLogRetentionDays": 90,
+    "registryRetentionDays": 90,
+    "lastCleanup": "2025-08-03T00:00:00Z"
+  },
+  "mcps": {
+    "github_api": {
+      "id": "github_api",
+      "name": "GitHub API Wrapper",
+      "version": "1.0.0",
+      "description": "GitHub REST API integration with auto-adaptation for JRVI logic agents",
+      "type": "external_api",
+      "status": "active",
+      "health": "healthy",
+      "apiEndpoint": "https://api.github.com",
+      "authRequired": true,
+      "rateLimits": {
+        "requestsPerHour": 5000,
+        "currentUsage": 0
+      },
+      "capabilities": [
+        "repository_management",
+        "issue_tracking",
+        "pull_request_management",
+        "user_management"
+      ],
+      "brandAffinity": ["JRVI"],
+      "persona": "developer",
+      "entry": "src/mcps/github_api.ts",
+      "enabled": true,
+      "autoDisableOnFailure": true,
+      "failureCount": 0,
+      "maxFailures": 3,
+      "installDate": "2025-08-03T00:00:00Z",
+      "lastUpdate": "2025-08-03T00:00:00Z",
+      "lastHealthCheck": "2025-08-03T00:00:00Z",
+      "healthCheckInterval": 300,
+      "versionFallback": {
+        "enabled": true,
+        "fallbackVersion": "0.9.0",
+        "autoFallback": true
+      },
+      "githubIntegration": {
+        "repositoryUrl": "https://github.com/octocat/github-api-wrapper",
+        "autoUpdate": true,
+        "updateBranch": "main",
+        "lastSync": "2025-08-03T00:00:00Z"
+      },
+      "auditLog": []
+    },
+    "openai_api": {
+      "id": "openai_api", 
+      "name": "OpenAI API Wrapper",
+      "version": "1.2.0",
+      "description": "OpenAI API integration for AI-powered JRVI functions",
+      "type": "external_api",
+      "status": "active",
+      "health": "healthy", 
+      "apiEndpoint": "https://api.openai.com/v1",
+      "authRequired": true,
+      "rateLimits": {
+        "requestsPerMinute": 60,
+        "currentUsage": 0
+      },
+      "capabilities": [
+        "text_generation",
+        "code_completion",
+        "chat_interface",
+        "embeddings"
+      ],
+      "brandAffinity": ["JRVI", "SPRKLS"],
+      "persona": "ai_assistant",
+      "entry": "src/mcps/openai_api.ts",
+      "enabled": true,
+      "autoDisableOnFailure": true,
+      "failureCount": 0,
+      "maxFailures": 5,
+      "installDate": "2025-08-01T00:00:00Z",
+      "lastUpdate": "2025-08-03T00:00:00Z",
+      "lastHealthCheck": "2025-08-03T00:00:00Z",
+      "healthCheckInterval": 600,
+      "versionFallback": {
+        "enabled": true,
+        "fallbackVersion": "1.1.0",
+        "autoFallback": true
+      },
+      "githubIntegration": {
+        "repositoryUrl": "https://github.com/openai/openai-api-wrapper",
+        "autoUpdate": true,
+        "updateBranch": "stable",
+        "lastSync": "2025-08-03T00:00:00Z"
+      },
+      "auditLog": []
+    },
+    "internal_analytics": {
+      "id": "internal_analytics",
+      "name": "Internal Analytics API",
+      "version": "2.1.0",
+      "description": "Internal JRVI analytics and metrics API for NKTA brand integration",
+      "type": "internal_api",
+      "status": "active",
+      "health": "healthy",
+      "apiEndpoint": "http://localhost:8080/api/analytics",
+      "authRequired": false,
+      "rateLimits": {
+        "requestsPerSecond": 100,
+        "currentUsage": 0
+      },
+      "capabilities": [
+        "usage_metrics",
+        "performance_analytics",
+        "user_behavior_tracking",
+        "system_monitoring"
+      ],
+      "brandAffinity": ["NKTA", "JRVI"],
+      "persona": "analyst",
+      "entry": "src/mcps/internal_analytics.ts",
+      "enabled": true,
+      "autoDisableOnFailure": false,
+      "failureCount": 0,
+      "maxFailures": 10,
+      "installDate": "2025-07-15T00:00:00Z",
+      "lastUpdate": "2025-08-03T00:00:00Z",
+      "lastHealthCheck": "2025-08-03T00:00:00Z",
+      "healthCheckInterval": 120,
+      "versionFallback": {
+        "enabled": true,
+        "fallbackVersion": "2.0.0",
+        "autoFallback": false
+      },
+      "githubIntegration": {
+        "repositoryUrl": "https://github.com/jrvi-internal/analytics-api",
+        "autoUpdate": false,
+        "updateBranch": "develop",
+        "lastSync": "2025-08-02T00:00:00Z"
+      },
+      "auditLog": []
+    }
+  },
+  "globalSettings": {
+    "enableAutoUpdate": true,
+    "enableHealthChecks": true,
+    "enableVersionFallback": true,
+    "maxGlobalFailures": 50,
+    "defaultHealthCheckInterval": 300,
+    "auditLogMaxEntries": 1000,
+    "githubSyncInterval": 3600,
+    "enforcementLevel": "strict"
+  },
+  "brandConfigs": {
+    "JRVI": {
+      "allowedMCPs": ["*"],
+      "restrictedMCPs": [],
+      "maxMCPsPerPersona": 20,
+      "requireApproval": false
+    },
+    "NKTA": {
+      "allowedMCPs": ["internal_analytics", "github_api"],
+      "restrictedMCPs": ["openai_api"],
+      "maxMCPsPerPersona": 10,
+      "requireApproval": true
+    },
+    "SPRKLS": {
+      "allowedMCPs": ["openai_api", "github_api"],
+      "restrictedMCPs": ["internal_analytics"],
+      "maxMCPsPerPersona": 15,
+      "requireApproval": false
+    }
+  },
+  "metadata": {
+    "totalMCPs": 3,
+    "activeMCPs": 3,
+    "healthyMCPs": 3,
+    "failedMCPs": 0,
+    "lastFullAudit": "2025-08-03T00:00:00Z",
+    "nextScheduledMaintenance": "2025-08-10T02:00:00Z"
+  }
+}

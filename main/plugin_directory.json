@@ -1,0 +1,347 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-31",
+  "description": "JRVI Plugin Directory - Registry of all available plugins and brand integrations",
+  "note": "AlphaOmega (Installer Seed) explicitly excluded per requirements",
+  "brands": {
+    "JRVI": {
+      "id": "JRVI",
+      "name": "JRVI Copilot",
+      "description": "Core development and AI assistance platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "jrvi_core",
+          "name": "JRVI Core",
+          "version": "1.0.0",
+          "description": "Core JRVI functionality and AI assistance",
+          "type": "core",
+          "entry": "src/plugins/jrvi/core.ts",
+          "dependencies": [],
+          "capabilities": ["ai_assistance", "development_tools", "code_analysis"]
+        },
+        {
+          "id": "dev_tools",
+          "name": "Development Tools",
+          "version": "1.0.0",
+          "description": "IDE integration and development utilities",
+          "type": "utility",
+          "entry": "src/plugins/jrvi/dev_tools.ts",
+          "dependencies": ["jrvi_core"],
+          "capabilities": ["code_editor", "debugger", "build_tools"]
+        },
+        {
+          "id": "ai_assistant",
+          "name": "AI Assistant",
+          "version": "1.0.0",
+          "description": "Intelligent assistance and automation",
+          "type": "ai",
+          "entry": "src/plugins/jrvi/ai_assistant.ts",
+          "dependencies": ["jrvi_core"],
+          "capabilities": ["chat_interface", "code_generation", "problem_solving"]
+        }
+      ]
+    },
+    "NKTA": {
+      "id": "NKTA",
+      "name": "NKTA Analytics",
+      "description": "Data analytics and business intelligence platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "nkta_analytics",
+          "name": "NKTA Analytics Core",
+          "version": "1.0.0",
+          "description": "Core analytics and data processing capabilities",
+          "type": "core",
+          "entry": "src/plugins/nkta/analytics.ts",
+          "dependencies": [],
+          "capabilities": ["data_analysis", "reporting", "visualization"]
+        },
+        {
+          "id": "data_processing",
+          "name": "Data Processing Engine",
+          "version": "1.0.0",
+          "description": "Advanced data processing and transformation",
+          "type": "processor",
+          "entry": "src/plugins/nkta/data_processing.ts",
+          "dependencies": ["nkta_analytics"],
+          "capabilities": ["etl", "data_transformation", "aggregation"]
+        },
+        {
+          "id": "visualization",
+          "name": "Data Visualization",
+          "version": "1.0.0",
+          "description": "Interactive charts and dashboard creation",
+          "type": "ui",
+          "entry": "src/plugins/nkta/visualization.ts",
+          "dependencies": ["nkta_analytics"],
+          "capabilities": ["charts", "dashboards", "interactive_reports"]
+        }
+      ]
+    },
+    "ENTRG": {
+      "id": "ENTRG",
+      "name": "ENTRG Energy",
+      "description": "Energy management and optimization platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "entrg_energy",
+          "name": "ENTRG Energy Core",
+          "version": "1.0.0",
+          "description": "Energy monitoring and management core",
+          "type": "core",
+          "entry": "src/plugins/entrg/energy.ts",
+          "dependencies": [],
+          "capabilities": ["energy_monitoring", "usage_tracking", "optimization"]
+        },
+        {
+          "id": "monitoring",
+          "name": "Energy Monitoring",
+          "version": "1.0.0",
+          "description": "Real-time energy consumption monitoring",
+          "type": "monitor",
+          "entry": "src/plugins/entrg/monitoring.ts",
+          "dependencies": ["entrg_energy"],
+          "capabilities": ["real_time_monitoring", "alerts", "threshold_management"]
+        },
+        {
+          "id": "optimization",
+          "name": "Energy Optimization",
+          "version": "1.0.0",
+          "description": "AI-powered energy usage optimization",
+          "type": "ai",
+          "entry": "src/plugins/entrg/optimization.ts",
+          "dependencies": ["entrg_energy", "monitoring"],
+          "capabilities": ["usage_optimization", "predictive_analysis", "cost_reduction"]
+        }
+      ]
+    },
+    "RMDLR": {
+      "id": "RMDLR",
+      "name": "RMDLR Remodeler",
+      "description": "Home renovation and design platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "rmdlr_design",
+          "name": "RMDLR Design Core",
+          "version": "1.0.0",
+          "description": "Design tools and renovation planning",
+          "type": "core",
+          "entry": "src/plugins/rmdlr/design.ts",
+          "dependencies": [],
+          "capabilities": ["design_tools", "space_planning", "material_selection"]
+        },
+        {
+          "id": "planning",
+          "name": "Renovation Planning",
+          "version": "1.0.0",
+          "description": "Project planning and timeline management",
+          "type": "planner",
+          "entry": "src/plugins/rmdlr/planning.ts",
+          "dependencies": ["rmdlr_design"],
+          "capabilities": ["project_planning", "timeline_management", "budget_tracking"]
+        },
+        {
+          "id": "visualization",
+          "name": "3D Visualization",
+          "version": "1.0.0",
+          "description": "3D rendering and virtual walkthroughs",
+          "type": "renderer",
+          "entry": "src/plugins/rmdlr/visualization.ts",
+          "dependencies": ["rmdlr_design"],
+          "capabilities": ["3d_rendering", "virtual_tours", "before_after_comparison"]
+        }
+      ]
+    },
+    "SPRKLS": {
+      "id": "SPRKLS",
+      "name": "SPRKLS Sparkles",
+      "description": "Creative content and social engagement platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "sprkls_content",
+          "name": "SPRKLS Content Core",
+          "version": "1.0.0",
+          "description": "Content creation and management tools",
+          "type": "core",
+          "entry": "src/plugins/sprkls/content.ts",
+          "dependencies": [],
+          "capabilities": ["content_creation", "asset_management", "publishing"]
+        },
+        {
+          "id": "social",
+          "name": "Social Media Integration",
+          "version": "1.0.0",
+          "description": "Social media platform integration and posting",
+          "type": "integration",
+          "entry": "src/plugins/sprkls/social.ts",
+          "dependencies": ["sprkls_content"],
+          "capabilities": ["social_posting", "engagement_tracking", "audience_analysis"]
+        },
+        {
+          "id": "creativity",
+          "name": "Creative Tools",
+          "version": "1.0.0",
+          "description": "AI-powered creative assistance and inspiration",
+          "type": "ai",
+          "entry": "src/plugins/sprkls/creativity.ts",
+          "dependencies": ["sprkls_content"],
+          "capabilities": ["idea_generation", "trend_analysis", "creative_enhancement"]
+        }
+      ]
+    },
+    "RESSRV": {
+      "id": "RESSRV",
+      "name": "ResSrv Reservations",
+      "description": "Reservation and booking management platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "ressrv_booking",
+          "name": "ResSrv Booking Core",
+          "version": "1.0.0",
+          "description": "Reservation and booking management system",
+          "type": "core",
+          "entry": "src/plugins/ressrv/booking.ts",
+          "dependencies": [],
+          "capabilities": ["booking_management", "availability_tracking", "payment_processing"]
+        },
+        {
+          "id": "scheduling",
+          "name": "Smart Scheduling",
+          "version": "1.0.0",
+          "description": "Intelligent scheduling and calendar management",
+          "type": "scheduler",
+          "entry": "src/plugins/ressrv/scheduling.ts",
+          "dependencies": ["ressrv_booking"],
+          "capabilities": ["calendar_integration", "conflict_resolution", "automated_scheduling"]
+        },
+        {
+          "id": "customer_mgmt",
+          "name": "Customer Management",
+          "version": "1.0.0",
+          "description": "Customer relationship and communication management",
+          "type": "crm",
+          "entry": "src/plugins/ressrv/customer_mgmt.ts",
+          "dependencies": ["ressrv_booking"],
+          "capabilities": ["customer_profiles", "communication_tracking", "loyalty_management"]
+        }
+      ]
+    },
+    "CAMPAIGN_SLANGER": {
+      "id": "CAMPAIGN_SLANGER",
+      "name": "Campaign Slanger",
+      "description": "Marketing campaign and communication platform",
+      "enabled": true,
+      "plugins": [
+        {
+          "id": "campaign_mgmt",
+          "name": "Campaign Management",
+          "version": "1.0.0",
+          "description": "Marketing campaign creation and management",
+          "type": "core",
+          "entry": "src/plugins/campaign/mgmt.ts",
+          "dependencies": [],
+          "capabilities": ["campaign_creation", "audience_targeting", "performance_tracking"]
+        },
+        {
+          "id": "communication",
+          "name": "Communication Engine",
+          "version": "1.0.0",
+          "description": "Multi-channel communication and messaging",
+          "type": "communication",
+          "entry": "src/plugins/campaign/communication.ts",
+          "dependencies": ["campaign_mgmt"],
+          "capabilities": ["email_marketing", "sms_campaigns", "push_notifications"]
+        },
+        {
+          "id": "strategy",
+          "name": "Strategy Assistant",
+          "version": "1.0.0",
+          "description": "AI-powered marketing strategy and optimization",
+          "type": "ai",
+          "entry": "src/plugins/campaign/strategy.ts",
+          "dependencies": ["campaign_mgmt"],
+          "capabilities": ["strategy_planning", "market_analysis", "campaign_optimization"]
+        }
+      ]
+    }
+  },
+  "rag_plugins": {
+    "description": "RAG (Retrieval-Augmented Generation) engine plugin scaffolds",
+    "plugins": [
+      {
+        "id": "rage_plugin",
+        "name": "RAGE Plugin",
+        "description": "Retrieval-Augmented Generation Engine core plugin",
+        "entry": "src/rag/rage_plugin.ts",
+        "type": "rag_core"
+      },
+      {
+        "id": "ragl_plugin",
+        "name": "RAGL Plugin",
+        "description": "RAG Logging and trace management plugin",
+        "entry": "src/rag/ragl_plugin.ts",
+        "type": "rag_logging"
+      },
+      {
+        "id": "ragm_plugin",
+        "name": "RAGM Plugin",
+        "description": "RAG Memory integration plugin",
+        "entry": "src/rag/ragm_plugin.ts",
+        "type": "rag_memory"
+      },
+      {
+        "id": "rags_plugin",
+        "name": "RAGS Plugin",
+        "description": "RAG Search and retrieval plugin",
+        "entry": "src/rag/rags_plugin.ts",
+        "type": "rag_search"
+      },
+      {
+        "id": "ragd_plugin",
+        "name": "RAGD Plugin",
+        "description": "RAG Document processing plugin",
+        "entry": "src/rag/ragd_plugin.ts",
+        "type": "rag_document"
+      }
+    ]
+  },
+  "cltm_integration": {
+    "description": "Cognitive Long-Term Memory system integration",
+    "components": [
+      {
+        "id": "cltm_core",
+        "name": "CLTM Core",
+        "description": "Core memory management and scoring system",
+        "entry": "src/memory/cltm_core.ts"
+      },
+      {
+        "id": "cltm_utils",
+        "name": "CLTM Utilities",
+        "description": "Memory utilities and helper functions",
+        "entry": "src/memory/cltm_utils.ts"
+      }
+    ]
+  },
+  "enforcement": {
+    "description": "System enforcement and compliance monitoring",
+    "enabled": true,
+    "policies": [
+      "no_alpha_omega_routing",
+      "brand_isolation",
+      "audit_trail_compliance",
+      "plugin_sandboxing"
+    ]
+  },
+  "metadata": {
+    "total_brands": 7,
+    "total_plugins": 22,
+    "excluded_brands": ["AlphaOmega"],
+    "last_audit": "2025-07-31T00:00:00Z"
+  }
+}
